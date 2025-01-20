@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Emotion Detection</h1>
+            <p>Enter your text below to analyze the emotion</p>
+        </header>
+        
+        <main>
+            <div class="input-section">
+                <textarea id="text-input" placeholder="Type your text here..."></textarea>
+                <button id="analyze-btn">Analyze Emotion</button>
+            </div>
 
+            <div class="result-section" id="result-section">
+                <div class="result-card">
+                    <h2>Detected Emotion:</h2>
+                    <p id="emotion-result">-</p>
+                    <div class="probability">
+                        <span>Confidence:</span>
+                        <span id="probability-result">-</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('analyze-btn').addEventListener('click', async () => {
+            const text = document.getElementById('text-input').value;
+            if (!text.trim()) {
+                alert('Please enter some text to analyze');
+                return;
+            }
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text }),
+                });
+
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    document.getElementById('emotion-result').textContent = data.emotion;
+                    document.getElementById('probability-result').textContent = data.probability;
+                    document.getElementById('result-section').style.display = 'block';
+                } else {
+                    alert('Error analyzing text: ' + data.message);
+                }
+            } catch (error) {
+                alert('Error connecting to server');
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
