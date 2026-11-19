@@ -152,8 +152,7 @@ To enhance model performance, the following techniques were applied:
 - Regularization through dropout layers.  
 - Early stopping to prevent overfitting by monitoring validation loss.  
 
-This LSTM-based architecture is well-suited for capturing the sequential nature of text data, making it effective for emotion classification tasks.
-
+The LSTM-based architecture effectively captures sequential patterns in text, making it suitable for emotion classification tasks.
 ---
 
 ## Final Results
