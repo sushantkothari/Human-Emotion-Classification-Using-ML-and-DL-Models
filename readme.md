@@ -47,7 +47,7 @@ The project is divided into the following steps:
 - Implements robust text preprocessing techniques, including:
   - Tokenization and word vectorization.
   - Padding sequences to ensure uniform input size for the models.
-- Provides detailed evaluation metrics for each model.
+- Provides a comprehensive evaluation of each model using detailed performance metrics.
 - Visualizes performance through confusion matrices and classification reports.
 - Saves trained models, allowing for deployment and reuse in real-world applications.
 
