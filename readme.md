@@ -14,7 +14,7 @@ The dataset used contains text samples labeled with emotions such as happiness, 
 The project is divided into the following steps:
 
 1. Dependency Installation
-   - Installing required libraries and frameworks such as TensorFlow, Keras, Scikit-learn, Pandas, and NLTK.
+   - Installing essential libraries and frameworks, including TensorFlow, Keras, Scikit-learn, Pandas, and NLTK.
 
 2. Data Loading
    - Importing and loading the dataset into the environment.
